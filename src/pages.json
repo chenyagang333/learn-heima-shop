@@ -100,11 +100,11 @@
   "subPackages": [
     {
       // 子包根目录
-      "root": "pagesMember",
+      "root": "pagesMember/settings",
       // 页面路径和窗口表现
       "pages": [
         {
-          "path": "settings/settings",
+          "path": "settings",
           "style": {
             "navigationBarTitleText": "设置"
           }
@@ -112,10 +112,10 @@
       ]
     },
     {
-      "root": "pagesMember",
+      "root": "pagesMember/profile",
       "pages": [
         {
-          "path": "profile/profile",
+          "path": "profile",
           "style": {
             "navigationStyle": "custom",
             "navigationBarTextStyle": "white",
@@ -130,7 +130,7 @@
     // 进入 我的 页面时，预下载分包
     "pages/my/my": {
       "network": "all",
-      "packages": ["pagesMember"]
+      "packages": ["pagesMember/settings", "pagesMember/profile"]
     }
   }
 }
