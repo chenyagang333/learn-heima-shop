@@ -123,6 +123,28 @@
           }
         }
       ]
+    },
+    {
+      "root": "pagesMember/address",
+      "pages": [
+        {
+          "path": "address",
+          "style": {
+            "navigationBarTitleText": "地址管理"
+          }
+        }
+      ]
+    },
+    {
+      "root": "pagesMember/address-form",
+      "pages": [
+        {
+          "path": "address-form",
+          "style": {
+            "navigationBarTitleText": ""
+          }
+        }
+      ]
     }
   ],
   // 分包下载规则
