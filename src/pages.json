@@ -110,6 +110,19 @@
           }
         }
       ]
+    },
+    {
+      "root": "pagesMember",
+      "pages": [
+        {
+          "path": "profile/profile",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTextStyle": "white",
+            "navigationBarTitleText": "个人信息"
+          }
+        }
+      ]
     }
   ],
   // 分包下载规则
