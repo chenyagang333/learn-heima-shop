@@ -38,6 +38,12 @@ const onTapImage = (url: string) => {
     urls: goods.value!.mainPictures,
   })
 }
+
+// uni-ui 弹出层组件 ref
+const popup = ref<{
+  open: (type?: UniHelper.UniPopupType) => void
+  close: () => void
+}>()
 </script>
 
 <template>
@@ -78,7 +84,7 @@ const onTapImage = (url: string) => {
           <text class="label">送至</text>
           <text class="text ellipsis"> 请选择收获地址 </text>
         </view>
-        <view class="item arrow">
+        <view class="item arrow" @tap="popup?.open('bottom')">
           <text class="label">服务</text>
           <text class="text ellipsis"> 无忧退 快速退款 免费包邮 </text>
         </view>
@@ -148,6 +154,14 @@ const onTapImage = (url: string) => {
       <view class="buynow"> 立即购买 </view>
     </view>
   </view>
+
+  <!-- 弹出层 -->
+  <uni-popup ref="popup" type="bottom" border-radius="10px 10px 0 0" background-color="#fff">
+    <view>1111</view>
+    <view>1111</view>
+    <view>1111</view>
+    <button @tap="popup?.close()"></button>
+  </uni-popup>
 </template>
 
 <style lang="scss">
