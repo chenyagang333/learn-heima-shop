@@ -376,7 +376,7 @@ export default {
       }
       if (val > this.max) {
         val = this.max
-      } else if (val <script this.min) {
+      } else if (val < this.min) {
         val = this.min
       }
       this.$nextTick(() => {

@@ -1,11 +1,11 @@
-// src/pages/goods/goods.vue
 <script setup lang="ts">
 import { onLoad } from '@dcloudio/uni-app'
-import { getGoodsByIdAPI } from '../../services/goods'
+import { getGoodsByIdAPI } from '@/services/goods'
 import { ref } from 'vue'
 import type { GoodsResult } from '@/types/goods'
 import AddressPanel from './components/AddressPanel.vue'
 import ServicePanel from './components/ServicePanel.vue'
+import type { SkuPopupLocaldata } from '@/components/vk-data-goods-sku-popup/vk-data-goods-sku-popup'
 
 // 获取屏幕边界到安全区域距离
 const { safeAreaInsets } = uni.getSystemInfoSync()
@@ -20,6 +20,29 @@ const goods = ref<GoodsResult>()
 const getGoodsByIdData = async () => {
   const res = await getGoodsByIdAPI(query.id)
   goods.value = res.result
+  // SKU 组件所需格式
+  localdata.value = {
+    _id: res.result.id,
+    name: res.result.name,
+    goods_thumb: res.result.mainPictures[0],
+    spec_list: res.result.specs.map((m) => {
+      return {
+        name: m.name,
+        list: m.values,
+      }
+    }),
+    sku_list: res.result.skus.map((m) => {
+      return {
+        _id: m.id,
+        goods_id: res.result.id,
+        goods_name: res.result.name,
+        image: m.picture,
+        price: m.price * 100, // 注意：需要乘以 100
+        stock: m.inventory,
+        sku_name_arr: m.specs.map((x) => x.valueName),
+      }
+    }),
+  }
 }
 // 页面加载
 onLoad(() => {
@@ -53,9 +76,16 @@ const openPopup = (name: typeof popupName.value) => {
   popupName.value = name
   popup.value?.open()
 }
+
+// 是否显示SKU弹窗组件
+const isShowSKU = ref<boolean>(false)
+// 商品信息
+const localdata = ref<SkuPopupLocaldata>({} as SkuPopupLocaldata)
 </script>
 
 <template>
+  <!-- SKU弹窗组件 -->
+  <vk-data-goods-sku-popup v-model="isShowSKU" :localdata="localdata" />
   <scroll-view scroll-y class="viewport">
     <!-- 基本信息 -->
     <view class="goods">
@@ -85,7 +115,7 @@ const openPopup = (name: typeof popupName.value) => {
 
       <!-- 操作面板 -->
       <view class="action">
-        <view class="item arrow">
+        <view @tap="isShowSKU = true" class="item arrow">
           <text class="label">选择</text>
           <text class="text ellipsis"> 请选择商品规格 </text>
         </view>
