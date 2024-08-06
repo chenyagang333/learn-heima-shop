@@ -138,25 +138,31 @@
       ]
     },
     {
-      "root": "pagesOrder/create",
+      "root": "pagesOrder",
       "pages": [
         {
-          "path": "create",
+          "path": "create/create",
           "style": {
             "navigationBarTitleText": "填写订单"
           }
         },
         {
-          "path": "detail",
+          "path": "detail/detail",
           "style": {
             "navigationBarTitleText": "订单详情",
             "navigationStyle": "custom"
           }
         },
         {
-          "path": "payment",
+          "path": "payment/payment",
           "style": {
             "navigationBarTitleText": "支付结果"
+          }
+        },
+        {
+          "path": "list/list",
+          "style": {
+            "navigationBarTitleText": "订单列表"
           }
         }
       ]
