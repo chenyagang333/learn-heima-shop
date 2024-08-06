@@ -10,7 +10,7 @@ import type {
   SkuPopupInstance,
   SkuPopupLocaldata,
 } from '@/components/vk-data-goods-sku-popup/vk-data-goods-sku-popup'
-import { postMemberCartAPI } from '@/types/cart'
+import { postMemberCartAPI } from '@/services/cart'
 
 // 获取屏幕边界到安全区域距离
 const { safeAreaInsets } = uni.getSystemInfoSync()
@@ -108,9 +108,12 @@ const selectArrText = computed(() => {
 })
 // 加入购物车事件
 const onAddCart = async (ev: SkuPopupEvent) => {
+  // 调用接口
   await postMemberCartAPI({ skuId: ev._id, count: ev.buy_num })
+  // 成功提示
   uni.showToast({ title: '添加成功' })
-  isShowSKU.value = false;
+  // 关闭弹窗
+  isShowSKU.value = false
 }
 </script>
 
