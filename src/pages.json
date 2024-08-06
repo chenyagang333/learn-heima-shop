@@ -161,7 +161,7 @@
     // 进入 我的 页面时，预下载分包
     "pages/my/my": {
       "network": "all",
-      "packages": ["pagesMember/settings", "pagesMember/profile"]
+      "packages": ["pagesMember"]
     }
   }
 }
