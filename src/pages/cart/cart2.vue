@@ -1,5 +1,5 @@
 <template>
-  <CatrMain></CatrMain>
+  <CatrMain :style="{ paddingBottom: safeAreaInsets?.bottom + 'px' }"></CatrMain>
 </template>
 
 <script setup lang="ts">
