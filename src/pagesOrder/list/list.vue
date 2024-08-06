@@ -12,8 +12,15 @@ const orderTabs = ref([
   { orderState: 4, title: '待评价' },
 ])
 
+// 获取页面参数
+const query = defineProps<{
+  type: string
+}>()
+
 // 高亮下标
-const activeIndex = ref<number>(0)
+const activeIndex = ref<number>(
+  orderTabs.value.findIndex((x) => x.orderState === Number(query.type)),
+)
 </script>
 
 <template>
