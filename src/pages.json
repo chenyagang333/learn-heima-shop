@@ -151,6 +151,17 @@
           }
         }
       ]
+    },
+    {
+      "root": "pagesOrder/create",
+      "pages": [
+        {
+          "path": "create",
+          "style": {
+            "navigationBarTitleText": "填写订单"
+          }
+        }
+      ]
     }
   ],
   // 分包下载规则

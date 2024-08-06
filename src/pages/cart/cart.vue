@@ -1,7 +1,7 @@
 <template>
-  <CatrMain></CatrMain>
+  <CartMain></CartMain>
 </template>
 
 <script setup lang="ts">
-import CatrMain from './components/CatrMain.vue'
+import CartMain from './components/CartMain.vue'
 </script>
